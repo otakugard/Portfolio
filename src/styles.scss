@@ -1,0 +1,720 @@
+//Han Yu's Portfolio, mainly styling scss
+//grid imports, cols and gutters located at grid.css
+
+//Coloring
+$main-black:        hsl(0,0,10) !default;
+$main-gery:         hsl(0,0,30) !default;
+$unselected-gery:   hsl(0,0,80)!default;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "main-black":       $main-black,
+    "main-gery":        $main-gery,
+    "unselected-gery":  $unselected-gery,
+  ),
+  $colors
+);
+//Coloring ends
+
+//Animations start
+$stand-trans-speed:         all .2s;
+$stand-trans-speed-slow:    all .4s;
+$stand-trans-curve:         cubic-bezier(0.4, 0.0, 0.2, 1);
+//Animations ends
+
+//Typesetting start
+$font-family-sans-serif:    "AktivGrotesk-Medium", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace:     "PFDinMonoW01-Medium", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-cjk:           "AktivGrotesk-Medium", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+$main-font-size:            20px;
+$main-font-height:          30px;
+$detail-font-size:          14px;
+$detail-font-height:        22px;
+//Typesetting ends
+
+//bottom size start
+$bottom-height:         110px;
+//bottom size ends
+
+::-webkit-selection {
+    color: white;
+    background: $main-black;
+}
+
+::-moz-selection {
+    color: white;
+    background: $main-black;
+  }
+  
+::selection {
+    color: white;
+    background: $main-black;
+}
+
+.clear-any-border {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    letter-spacing: -0.0068em;
+}
+
+@keyframes bodyFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+body {
+    color: $main-black;
+    font-family: $font-family-sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    //max-height: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $bottom-height; //Setting to bottom
+}
+
+.cjk-characters {
+    font-family: $font-family-cjk;
+    font-weight: 500;
+}
+
+i {
+    color: $main-black;
+    font-family: $font-family-sans-serif;
+    font-style: italic;
+
+    &.left {
+        padding-left: 0px; 
+    }
+
+    &.right {
+        padding-right: 2px;
+    }
+
+    &.inline {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+i.cjk {
+    color: $main-black;
+    font-family: $font-family-cjk;
+
+    &.left {
+        padding-left: 0px; 
+    }
+
+    &.right {
+        padding-right: 2px;
+    }
+
+    &.inline {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+code {
+    font-size: 15px;
+    vertical-align: 1.5px;
+    color: white;
+    font-family: $font-family-monospace;
+    background: $main-black;
+    border-radius: 2px;
+    padding: .3px 5px;
+}
+
+a.black {
+    color: $main-black;
+}
+
+code::-webkit-selection {
+    color: $main-black;
+    background: white;
+}
+
+code::-moz-selection {
+    color: $main-black;
+    background: white;
+}
+  
+code::selection {
+    color: $main-black;
+    background: white;
+}
+
+// header start
+header {
+    padding-top: 64px;
+    animation: bodyFadeIn .4s $stand-trans-curve;
+}
+
+.title-name {
+    color: $main-black;
+    font-size: 40px;
+}
+
+.title-intro {
+    color: $main-black;
+    font-size: 20px;
+}
+// header ends
+
+// nav start
+div.main-part {
+    padding-top: 60px;
+    padding-bottom: 90px;
+    animation: bodyFadeIn .8s $stand-trans-curve;
+
+    &.works-showcase {
+        padding-top: 10px;
+    }
+}
+
+ul.nav-list {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    padding-bottom: 30px;
+}
+
+li.nav-list-item {
+    margin-bottom: 30px;
+}
+
+li.nav-list-item.selected {
+    color: $main-black;
+}
+
+li.nav-list-item.unselected {
+    color: $unselected-gery;
+}
+
+a {
+    text-decoration: none;
+    color: $main-black;
+}
+
+a.selected {
+    color: $main-black;
+    position: relative;
+}
+
+a.selected:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $main-black;
+    visibility: hidden;
+    transition: $stand-trans-speed;
+    transition-timing-function: $stand-trans-curve;
+}
+
+a.selected:hover:before {
+    visibility: visible;
+    width: 100%;
+}
+
+a.unselected {
+    color: $unselected-gery;
+    text-decoration: none;
+    position: relative;
+}
+
+a.unselected:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $main-black;
+    visibility: hidden;
+    transition: $stand-trans-speed;
+    transition-timing-function: $stand-trans-curve;
+}
+
+a.unselected:hover:before {
+    visibility: visible;
+    width: 100%;
+}
+
+a.unselected:hover {
+    color: $main-black;
+}
+// nav ends
+
+//main-parts start
+//self-intro start
+p.self-intro {
+    margin: 0;
+    margin-bottom: 90px;
+    color: $main-gery;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+}
+//self-intro ends
+
+//button start
+
+button.main-button {
+    color: white;
+    text-decoration: none;
+    border: none;
+    margin: 0;
+    background-color: $main-black;
+    padding: 30px 31px;
+    font-size: $main-font-size;
+    cursor: pointer;
+    
+    &.bottom {
+        margin-bottom: 90px;
+    }
+}
+
+div.button-text{
+    font-family: "AktivGrotesk-Medium",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+}
+
+//button underline animation start
+div.button-text:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    visibility: hidden;
+    transition: $stand-trans-speed;
+    transition-timing-function: $stand-trans-curve;
+}
+
+div.button-text.btn-ani:before {
+    visibility: visible;
+    width: 100%;
+}
+//button underline animation ends
+//button ends
+//main-parts start
+
+//footer start
+//right col in footer start
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $bottom-height;
+    right: 0;
+    left: 0;
+    padding-bottom: $bottom-height;
+}
+
+p.email-text {
+    font-size: $main-font-size;
+    color: $main-gery;
+}
+
+a.mailto-link {
+    margin-left: 15px;
+}
+//right col in footer ends
+
+//left col in footer start
+a.sns-icons-link {
+    float: right;
+    margin-left: 30px;
+    transition-property: transform;
+    transition: $stand-trans-speed;
+    transition-timing-function: $stand-trans-curve;
+}
+
+a.sns-icons-link:hover {
+    transform: translateY(-6px);
+}
+//left col in footer ends
+
+//footer ends
+
+//Resume Page Start
+//Stack: div.Cover - p.title - p.text-main -<   a.sub
+//                                              a.detail
+
+article.main-part-resume {
+    padding-right: 0;
+}
+
+div.resume-frame {
+    margin-bottom: 60px;
+}
+
+p.resume-title {
+    margin: 0;
+    margin-bottom: 30px;
+    color: $main-black;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+}
+
+p.resume-text-main {
+    margin: 0;
+    margin-bottom: 20px;
+    color: $main-black;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+}
+
+a.resume-text-sub {
+    margin: 0;
+    color: $main-gery;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+}
+
+a.resume-text-detail {
+    display: inline-block; // Override p.resume-text-main
+    padding-right: 15px;
+    margin: 0;
+    margin-top: 15px;
+    color: $main-gery;
+    font-size: $detail-font-size;
+    line-height: $detail-font-height;
+}
+
+div.resume-frame-end {
+    margin-bottom: 90px;
+}
+//Resume Page Ends
+
+//Showcase Page Start
+p.showcase-main-text{
+    margin: 0;
+    margin-bottom: 60px;
+    color: $main-gery;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+}
+
+ul.showcase-list {
+    font-size: 20px;
+    padding: 0;
+    list-style: none;
+    padding-bottom: 60px;
+}
+
+li.showcase-list-item {
+    float: left;
+    margin-right: 30px;
+}
+
+div.showcase-covers-frame {
+
+    &.hide-div {
+        display: none;
+    }
+
+    &.show-div {
+        display: block;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: $stand-trans-speed-slow;
+        transition-timing-function: $stand-trans-curve;
+    }
+
+    &.show-div.cover-ani {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// Showcase Cover Basic Start
+div.showcase-cover-background {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    background-color: antiquewhite;
+    margin-bottom: 30px;
+    
+    &.img {
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        //Background Image Start
+        //Overload Start
+        &.overload {
+            background-image: url("../img/showcase/overload-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/overload-showcase-img.png") 1x,
+                url("../img/showcase/overload-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/overload-showcase-img.png") 1x,
+                url("../img/showcase/overload-showcase-img@2x.png") 2x,
+            );
+        } //Overload End
+        &.boldstorming {
+            background-image: url("../img/showcase/boldstorming-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/boldstorming-showcase-img.png") 1x,
+                url("../img/showcase/boldstorming-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/boldstorming-showcase-img.png") 1x,
+                url("../img/showcase/boldstorming-showcase-img@2x.png") 2x,
+            );
+        }
+        &.mojisanpo {
+            background-image: url("../img/showcase/mojisanpo-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/mojisanpo-showcase-img.png") 1x,
+                url("../img/showcase/mojisanpo-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/mojisanpo-showcase-img.png") 1x,
+                url("../img/showcase/mojisanpo-showcase-img@2x.png") 2x,
+            );
+        }
+        &.sleepad {
+            background-image: url("../img/showcase/sleepad-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/sleepad-showcase-img.png") 1x,
+                url("../img/showcase/sleepad-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/sleepad-showcase-img.png") 1x,
+                url("../img/showcase/sleepad-showcase-img@2x.png") 2x,
+            );
+        }
+        &.bamboo-shelter {
+            background-image: url("../img/showcase/bamboo-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/bamboo-showcase-img.png") 1x,
+                url("../img/showcase/bamboo-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/bamboo-showcase-img.png") 1x,
+                url("../img/showcase/bamboo-showcase-img@2x.png") 2x,
+            );
+        }
+        &.charging-station {
+            background-image: url("../img/showcase/charing-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/charing-showcase-img.png") 1x,
+                url("../img/showcase/charing-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/charing-showcase-img.png") 1x,
+                url("../img/showcase/charing-showcase-img@2x.png") 2x,
+            );
+        }
+        &.metro {
+            background-image: url("../img/showcase/metro-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/metro-showcase-img.png") 1x,
+                url("../img/showcase/metro-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/metro-showcase-img.png") 1x,
+                url("../img/showcase/metro-showcase-img@2x.png") 2x,
+            );
+        }
+        &.dyshcare {
+            background-image: url("../img/showcase/dyshcare-showcase-img@2x.png");
+            background-image: -webkit-image-set(
+                url("../img/showcase/dyshcare-showcase-img.png") 1x,
+                url("../img/showcase/dyshcare-showcase-img@2x.png") 2x,
+            );
+            background-image: image-set(
+                url("../img/showcase/dyshcare-showcase-img.png") 1x,
+                url("../img/showcase/dyshcare-showcase-img@2x.png") 2x,
+            );
+        }
+    }
+} // Showcase Cover Basic Ends
+
+p.showcase-cover-text {
+    position: absolute;
+    padding: 30px;
+    bottom: 0px;
+    margin: 0;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+    text-shadow: 0px 2px 4px hsla(0,0,0,.15);
+}
+
+//Showcase Cover Div Animation Start
+div.showcase-cover-background:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: 0;
+    left: 0;
+    background-color: $main-black;
+    visibility: hidden;
+    transition: $stand-trans-speed;
+    transition-timing-function: $stand-trans-curve;
+}
+
+div.showcase-cover-background.btn-ani:before {
+    visibility: visible;
+    width: 100%;
+}
+//Showcase Cover Div Animation End
+
+//Showcase Works Detail Div Animation Start
+
+h1.work-title-main {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+h2.work-title-detail {
+    padding: 0;
+    margin: 0;
+    font-size: $main-font-size;
+    font-weight: normal;
+}
+
+img.work-title-back {
+    float: right;
+}
+
+article.work-article-frame{
+    margin-top: 30px;
+}
+
+div.work-media-frame {
+    margin-bottom: 60px;
+
+    > img {
+        width: 100%;
+        height: auto;
+    }
+    > video {
+        width: 100%;
+    }
+    > p {
+        margin-top: 10px;
+        font-size: $main-font-size;
+        color: $main-gery;
+        text-align: center;
+        line-height: $main-font-height;
+    }
+}
+
+div.work-media-table {
+    margin-bottom: 90px;
+    font-family: $font-family-sans-serif;
+    font-size: $main-font-size;
+    line-height: 28px;
+
+    > div.work-media-table-row{
+        margin-bottom: 30px;
+
+        > div.work-media-table-title {
+    
+            > a.work-media-table-sub {
+                color: $main-gery;
+            }
+        }
+
+    }
+}
+
+div.work-title.main {
+    margin-bottom: 60px;
+
+    > h1.work-title-main {
+        padding: 0;
+        margin: 0;
+        font-size: 40px;
+        font-weight: normal;
+    }
+    
+    > h2.work-title-detail {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 5px;
+        font-size: $main-font-size;
+        font-weight: normal;
+    }
+
+}
+
+p.work-article {
+    padding: 0;
+    margin: 0;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+    color: $main-gery;
+    margin-bottom: 60px;
+
+    &.list-title {
+        color: $main-black;
+        margin-bottom: 30px !important;
+    }
+
+    > a.work-article-title{
+        color: $main-black;
+    }
+}
+
+ul.work-article-list {
+    color: $main-gery;
+    list-style-type: disc;
+    padding: 0;
+    margin: 0;
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+    margin-bottom: 90px;
+}
+
+.last-line {
+    margin-bottom: 90px !important;
+}
+
+div.work-article-refs {
+    font-size: $main-font-size;
+    line-height: $main-font-height;
+    overflow-wrap: break-word;
+
+    > div.work-article-refs-main {
+        margin-bottom: 60px;
+    }
+
+    > div.work-article-refs-title {
+        margin-bottom: 15px;
+
+        > a.work-article-refs-sm {
+            color: $main-gery;
+            margin-top: 10px; // topper line - bottom baseline height
+            color: $unselected-gery;
+        }
+    }
+}

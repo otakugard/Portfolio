@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="260" viewBox="0 0 260 260">
+  <defs>
+    <clipPath id="clip-favicon-white">
+      <rect width="260" height="260"/>
+    </clipPath>
+  </defs>
+  <g id="favicon-white" clip-path="url(#clip-favicon-white)">
+    <g id="Group_39" data-name="Group 39" transform="translate(-51.688 -307.639)">
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="260" height="260" transform="translate(51.687 307.639)" fill="#1a1a1a"/>
+      <path id="Exclusion_2" data-name="Exclusion 2" d="M212,212H0V0H212V212ZM119.627,104.486V190.8h66.629V104.486H155.971l10.689,0ZM25.743,128.714V190.8H93.886V128.714H68.143l9.874,0Zm0-107.513v83.285H93.886V21.2ZM153.49,18.05a35.785,35.785,0,1,0,13.973,2.821A35.672,35.672,0,0,0,153.49,18.05ZM54.514,128.717l-28.771,0H54.514Zm89.342-24.228-24.229,0h24.229Z" transform="translate(75.687 331.639)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
